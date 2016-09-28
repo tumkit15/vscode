@@ -17,8 +17,6 @@ interface IPackageInfo {
 	aiKey: string;
 }
 
-const defaultHighlightJsStyleFileName = 'tomorrow-night.css';
-
 var telemetryReporter: TelemetryReporter;
 
 export function activate(context: ExtensionContext) {
@@ -167,6 +165,7 @@ class MDDocumentContentProvider implements TextDocumentContentProvider {
 		this._context = context;
 		this._waiting = false;
 		this._renderer = this.createRenderer();
+		this._alertedForMissingTheme = '';
 	}
 
 	private createRenderer() : IRenderer {
@@ -240,7 +239,7 @@ class MDDocumentContentProvider implements TextDocumentContentProvider {
 			if (highlightStyleFileName.match(/^[a-z0-9][a-z0-9\-\.]+$/)) {
 				try {
 					const path = require.resolve(`highlight.js/styles/${highlightStyleFileName}`);
-					this._alertedForMissingTheme = "";
+					this._alertedForMissingTheme = '';
 					return path;
 				} catch (e) {
 					/* noop */
