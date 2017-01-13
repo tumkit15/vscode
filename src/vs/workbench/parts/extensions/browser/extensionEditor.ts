@@ -323,8 +323,11 @@ export class ExtensionEditor extends BaseEditor {
 
 				webview.style(this.themeService.getColorTheme());
 				webview.contents = [body];
-
-				webview.onDidClickLink(link => this.openerService.open(link), null, this.contentDisposables);
+				webview.onDidClickLink(link => {
+					if (link && ['mailto', 'http', 'https'].indexOf(link.scheme) >= 0) {
+						this.openerService.open(link);
+					}
+				}, null, this.contentDisposables);
 				this.themeService.onDidColorThemeChange(themeId => webview.style(themeId), null, this.contentDisposables);
 				this.contentDisposables.push(webview);
 			})
