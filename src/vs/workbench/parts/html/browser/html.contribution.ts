@@ -72,7 +72,7 @@ CommandsRegistry.registerCommand('_workbench.htmlZone', function (accessor: Serv
 
 });
 
-CommandsRegistry.registerCommand('_workbench.previewHtml', function (accessor: ServicesAccessor, resource: URI | string, position?: EditorPosition, label?: string) {
+CommandsRegistry.registerCommand('_workbench.previewHtml', function (accessor: ServicesAccessor, resource: URI | string, position?: EditorPosition, label?: string, nodeIntegration?: boolean) {
 
 	const uri = resource instanceof URI ? resource : URI.parse(resource);
 	label = label || uri.fsPath;
@@ -91,7 +91,7 @@ CommandsRegistry.registerCommand('_workbench.previewHtml', function (accessor: S
 
 	// Otherwise, create new input and open it
 	if (!input) {
-		input = accessor.get(IInstantiationService).createInstance(HtmlInput, label, '', uri);
+		input = accessor.get(IInstantiationService).createInstance(HtmlInput, label, '', uri, !!nodeIntegration);
 	} else {
 		input.setName(label); // make sure to use passed in label
 	}

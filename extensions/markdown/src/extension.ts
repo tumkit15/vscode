@@ -154,7 +154,8 @@ function showPreview(uri?: vscode.Uri, sideBySide: boolean = false) {
 	const thenable = vscode.commands.executeCommand('vscode.previewHtml',
 		getMarkdownUri(resource),
 		getViewColumn(sideBySide),
-		`Preview '${path.basename(resource.fsPath)}'`);
+		`Preview '${path.basename(resource.fsPath)}'`,
+		false /* nodeIntegration */);
 
 	if (telemetryReporter) {
 		telemetryReporter.sendTelemetryEvent('openPreview', {

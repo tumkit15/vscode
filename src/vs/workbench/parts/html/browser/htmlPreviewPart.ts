@@ -39,6 +39,7 @@ export class HtmlPreviewPart extends BaseEditor {
 	private _container: HTMLDivElement;
 
 	private _baseUrl: URI;
+	private _nodeIntegration: boolean = false;
 
 	private _modelRef: IReference<ITextEditorModel>;
 	public get model(): IModel { return this._modelRef && this._modelRef.object.textEditorModel; }
@@ -79,10 +80,14 @@ export class HtmlPreviewPart extends BaseEditor {
 		parent.getHTMLElement().appendChild(this._container);
 	}
 
-	private get webview(): Webview {
+	private getOrCreateWebview(): Webview {
 		if (!this._webview) {
-			this._webview = new Webview(this._container, document.querySelector('.monaco-editor-background'), { nodeintegration: true });
+			this._webview = new Webview(
+				this._container,
+				document.querySelector('.monaco-editor-background'),
+				{ nodeintegration: this._nodeIntegration });
 			this._webview.baseUrl = this._baseUrl && this._baseUrl.toString(true);
+			this._webview.style(this._themeService.getColorTheme());
 
 			this._webviewDisposables = [
 				this._webview,
@@ -114,12 +119,14 @@ export class HtmlPreviewPart extends BaseEditor {
 			this._webviewDisposables = dispose(this._webviewDisposables);
 			this._webview = undefined;
 		} else {
-			this._themeChangeSubscription = this._themeService.onDidColorThemeChange(themeId => this.webview.style(themeId));
-			this.webview.style(this._themeService.getColorTheme());
+			this._themeChangeSubscription = this._themeService.onDidColorThemeChange(themeId => this.getOrCreateWebview().style(themeId));
+			if (this._webview) {
+				this._webview.style(this._themeService.getColorTheme());
+			}
 
 			if (this._hasValidModel()) {
-				this._modelChangeSubscription = this.model.onDidChangeContent(() => this.webview.contents = this.model.getLinesContent());
-				this.webview.contents = this.model.getLinesContent();
+				this._modelChangeSubscription = this.model.onDidChangeContent(() => this.getOrCreateWebview().contents = this.model.getLinesContent());
+				this.getOrCreateWebview().contents = this.model.getLinesContent();
 			}
 		}
 	}
@@ -136,7 +143,9 @@ export class HtmlPreviewPart extends BaseEditor {
 	}
 
 	public focus(): void {
-		this.webview.focus();
+		if (this._webview) {
+			this._webview.focus();
+		}
 	}
 
 	public clearInput(): void {
@@ -146,10 +155,15 @@ export class HtmlPreviewPart extends BaseEditor {
 	}
 
 	public sendMessage(data: any): void {
-		this.webview.sendMessage(data);
+		if (this._webview) {
+			this._webview.sendMessage(data);
+		}
 	}
 
 	public setInput(input: EditorInput, options?: EditorOptions): TPromise<void> {
+		if (input instanceof HtmlInput) {
+			this._nodeIntegration = input.nodeIntegration;
+		}
 
 		if (this.input && this.input.matches(input) && this._hasValidModel()) {
 			return TPromise.as(undefined);
@@ -168,7 +182,6 @@ export class HtmlPreviewPart extends BaseEditor {
 			const resourceUri = input.getResource();
 			return this._textModelResolverService.createModelReference(resourceUri).then(ref => {
 				const model = ref.object;
-
 				if (model instanceof BaseTextEditorModel) {
 					this._modelRef = ref;
 				}
@@ -177,9 +190,9 @@ export class HtmlPreviewPart extends BaseEditor {
 					return TPromise.wrapError<void>(localize('html.voidInput', "Invalid editor input."));
 				}
 
-				this._modelChangeSubscription = this.model.onDidChangeContent(() => this.webview.contents = this.model.getLinesContent());
-				this.webview.baseUrl = resourceUri.toString(true);
-				this.webview.contents = this.model.getLinesContent();
+				this._modelChangeSubscription = this.model.onDidChangeContent(() => this.getOrCreateWebview().contents = this.model.getLinesContent());
+				this.getOrCreateWebview().baseUrl = resourceUri.toString(true);
+				this.getOrCreateWebview().contents = this.model.getLinesContent();
 
 				return undefined;
 			});
