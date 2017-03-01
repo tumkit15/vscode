@@ -183,9 +183,11 @@
 		"highlight.js": "^9.3.0",
 		"markdown-it": "^8.2.2",
 		"markdown-it-named-headers": "0.0.4",
+		"sanitize-html": "^1.14.1",
 		"vscode-extension-telemetry": "^0.0.6"
 	},
 	"devDependencies": {
-		"@types/node": "^7.0.4"
+		"@types/node": "^7.0.4",
+		"@types/sanitize-html": "^1.13.31"
 	}
 }
