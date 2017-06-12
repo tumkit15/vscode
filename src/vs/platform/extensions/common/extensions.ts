@@ -24,6 +24,7 @@ export interface IExtensionDescription {
 	readonly main?: string;
 	readonly contributes?: { [point: string]: any; };
 	enableProposedApi?: boolean;
+	capabilities: string[];
 }
 
 export const IExtensionService = createDecorator<IExtensionService>('extensionService');

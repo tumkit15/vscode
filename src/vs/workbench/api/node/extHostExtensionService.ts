@@ -6,6 +6,7 @@
 
 import { IDisposable, dispose } from 'vs/base/common/lifecycle';
 import { join } from 'path';
+import * as fs from 'fs';
 import { mkdirp, dirExists } from 'vs/base/node/pfs';
 import Severity from 'vs/base/common/severity';
 import { TPromise } from 'vs/base/common/winjs.base';
@@ -13,11 +14,12 @@ import { AbstractExtensionService, ActivatedExtension } from 'vs/platform/extens
 import { IExtensionDescription } from 'vs/platform/extensions/common/extensions';
 import { ExtHostStorage } from 'vs/workbench/api/node/extHostStorage';
 import { ITelemetryService } from 'vs/platform/telemetry/common/telemetry';
-import { createApiFactory, initializeExtensionApi } from 'vs/workbench/api/node/extHost.api.impl';
+import { createApiFactory, initializeExtensionApi, IExtensionApiFactory } from 'vs/workbench/api/node/extHost.api.impl';
 import { IThreadService } from 'vs/workbench/services/thread/common/threadService';
 import { IWorkspaceContextService } from 'vs/platform/workspace/common/workspace';
 import { MainContext, MainProcessExtensionServiceShape, IEnvironment, IInitData } from './extHost.protocol';
 import { createHash } from 'crypto';
+import vm2 = require('vm2');
 
 const hasOwnProperty = Object.hasOwnProperty;
 
@@ -165,6 +167,7 @@ export interface IExtensionContext {
 }
 
 export class ExtHostExtensionService extends AbstractExtensionService<ExtHostExtension> {
+	_apiFactory: IExtensionApiFactory;
 
 	private _threadService: IThreadService;
 	private _storage: ExtHostStorage;
@@ -187,8 +190,8 @@ export class ExtHostExtensionService extends AbstractExtensionService<ExtHostExt
 		this._contextService = contextService;
 
 		// initialize API first
-		const apiFactory = createApiFactory(initData, threadService, this, this._contextService, this._telemetryService);
-		initializeExtensionApi(this, apiFactory).then(() => this._triggerOnReady());
+		this._apiFactory = createApiFactory(initData, threadService, this, this._contextService, this._telemetryService);
+		initializeExtensionApi(this, this._apiFactory).then(() => this._triggerOnReady());
 	}
 
 	public getAllExtensionDescriptions(): IExtensionDescription[] {
@@ -300,7 +303,7 @@ export class ExtHostExtensionService extends AbstractExtensionService<ExtHostExt
 		}
 		return this.onReady().then(() => {
 			return TPromise.join<any>([
-				loadCommonJSModule(extensionDescription.main),
+				loadCommonJSModule(extensionDescription, this._apiFactory, extensionDescription.main),
 				this._loadExtensionContext(extensionDescription)
 			]).then(values => {
 				return ExtHostExtensionService._callActivate(<IExtensionModule>values[0], <IExtensionContext>values[1]);
@@ -347,13 +350,48 @@ export class ExtHostExtensionService extends AbstractExtensionService<ExtHostExt
 	public $activateExtension(extensionDescription: IExtensionDescription): TPromise<void> {
 		return this._activateExtension(extensionDescription);
 	}
-
 }
 
-function loadCommonJSModule<T>(modulePath: string): TPromise<T> {
+function getSandbox(
+	extension: IExtensionDescription,
+	apiFactory: IExtensionApiFactory
+): any {
+	if (!Array.isArray(extension.capabilities) || extension.capabilities.indexOf('node') >= 0) {
+		return {
+			require: {
+				external: true,
+				builtin: ['fs', 'path'],
+				root: extension.extensionFolderPath,
+				mock: {
+					vscode: apiFactory(extension)
+				},
+				context: 'host'
+			}
+		};
+	}
+	return {
+		require: {
+			external: true,
+			builtin: [],
+			root: extension.extensionFolderPath,
+			mock: {
+				vscode: apiFactory(extension)
+			},
+			context: 'sandbox'
+		}
+	};
+}
+
+function loadCommonJSModule<T>(
+	extension: IExtensionDescription,
+	apiFactory: IExtensionApiFactory,
+	modulePath: string
+): TPromise<T> {
 	let r: T = null;
 	try {
-		r = require.__$__nodeRequire<T>(modulePath);
+		r = vm2.NodeVM.file(
+			require.toUrl(modulePath) + '.js',
+			getSandbox(extension, apiFactory));
 	} catch (e) {
 		return TPromise.wrapError<T>(e);
 	}
