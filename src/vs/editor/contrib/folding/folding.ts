@@ -30,7 +30,7 @@ export const ID = 'editor.contrib.folding';
 
 export class FoldingController implements IEditorContribution {
 
-	static MAX_FOLDING_REGIONS = 5000;
+	static readonly MAX_FOLDING_REGIONS = 5000;
 
 
 	public static get(editor: ICodeEditor): FoldingController {

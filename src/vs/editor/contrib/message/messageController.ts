@@ -24,7 +24,7 @@ export class MessageController implements editorCommon.IEditorContribution {
 
 	private static readonly _id = 'editor.contrib.messageController';
 
-	static CONTEXT_SNIPPET_MODE = new RawContextKey<boolean>('messageVisible', false);
+	static readonly CONTEXT_SNIPPET_MODE = new RawContextKey<boolean>('messageVisible', false);
 
 	static get(editor: ICodeEditor): MessageController {
 		return editor.getContribution<MessageController>(MessageController._id);

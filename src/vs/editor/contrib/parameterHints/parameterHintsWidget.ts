@@ -37,7 +37,7 @@ export interface IHintEvent {
 
 export class ParameterHintsModel extends Disposable {
 
-	static DELAY = 120; // ms
+	static readonly DELAY = 120; // ms
 
 	private _onHint = this._register(new Emitter<IHintEvent>());
 	onHint: Event<IHintEvent> = this._onHint.event;

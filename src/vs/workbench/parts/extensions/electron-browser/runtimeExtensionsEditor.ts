@@ -452,7 +452,7 @@ export class RuntimeExtensionsInput extends EditorInput {
 
 export class ShowRuntimeExtensionsAction extends Action {
 	static readonly ID = 'workbench.action.showRuntimeExtensions';
-	static LABEL = nls.localize('showRuntimeExtensions', "Show Running Extensions");
+	static readonly LABEL = nls.localize('showRuntimeExtensions', "Show Running Extensions");
 
 	constructor(
 		id: string, label: string,
@@ -469,7 +469,7 @@ export class ShowRuntimeExtensionsAction extends Action {
 
 class ReportExtensionIssueAction extends Action {
 	static readonly ID = 'workbench.extensions.action.reportExtensionIssue';
-	static LABEL = nls.localize('reportExtensionIssue', "Report Issue");
+	static readonly LABEL = nls.localize('reportExtensionIssue', "Report Issue");
 
 	constructor(
 		id: string = ReportExtensionIssueAction.ID, label: string = ReportExtensionIssueAction.LABEL
@@ -507,10 +507,10 @@ class ReportExtensionIssueAction extends Action {
 
 class ExtensionHostProfileAction extends Action {
 	static readonly ID = 'workbench.extensions.action.extensionHostProfile';
-	static LABEL_START = nls.localize('extensionHostProfileStart', "Start Extension Host Profile");
-	static LABEL_STOP = nls.localize('extensionHostProfileStop', "Stop Extension Host Profile");
-	static STOP_CSS_CLASS = 'extension-host-profile-stop';
-	static START_CSS_CLASS = 'extension-host-profile-start';
+	static readonly LABEL_START = nls.localize('extensionHostProfileStart', "Start Extension Host Profile");
+	static readonly LABEL_STOP = nls.localize('extensionHostProfileStop', "Stop Extension Host Profile");
+	static readonly STOP_CSS_CLASS = 'extension-host-profile-stop';
+	static readonly START_CSS_CLASS = 'extension-host-profile-start';
 
 	constructor(
 		id: string = ExtensionHostProfileAction.ID, label: string = ExtensionHostProfileAction.LABEL_START,
@@ -548,7 +548,7 @@ class ExtensionHostProfileAction extends Action {
 
 class SaveExtensionHostProfileAction extends Action {
 
-	static LABEL = nls.localize('saveExtensionHostProfile', "Save Extension Host Profile");
+	static readonly LABEL = nls.localize('saveExtensionHostProfile', "Save Extension Host Profile");
 	static readonly ID = 'workbench.extensions.action.saveExtensionHostProfile';
 
 	constructor(

@@ -7,11 +7,11 @@ import { SpectronApplication } from '../../spectron/application';
 
 export class QuickOpen {
 
-	static QUICK_OPEN_HIDDEN = 'div.quick-open-widget[aria-hidden="true"]';
-	static QUICK_OPEN = 'div.quick-open-widget[aria-hidden="false"]';
-	static QUICK_OPEN_INPUT = `${QuickOpen.QUICK_OPEN} .quick-open-input input`;
-	static QUICK_OPEN_FOCUSED_ELEMENT = `${QuickOpen.QUICK_OPEN} .quick-open-tree .monaco-tree-row.focused .monaco-highlighted-label`;
-	static QUICK_OPEN_ENTRY_SELECTOR = 'div[aria-label="Quick Picker"] .monaco-tree-rows.show-twisties .monaco-tree-row .quick-open-entry';
+	static readonly QUICK_OPEN_HIDDEN = 'div.quick-open-widget[aria-hidden="true"]';
+	static readonly QUICK_OPEN = 'div.quick-open-widget[aria-hidden="false"]';
+	static readonly QUICK_OPEN_INPUT = `${QuickOpen.QUICK_OPEN} .quick-open-input input`;
+	static readonly QUICK_OPEN_FOCUSED_ELEMENT = `${QuickOpen.QUICK_OPEN} .quick-open-tree .monaco-tree-row.focused .monaco-highlighted-label`;
+	static readonly QUICK_OPEN_ENTRY_SELECTOR = 'div[aria-label="Quick Picker"] .monaco-tree-rows.show-twisties .monaco-tree-row .quick-open-entry';
 
 	constructor(readonly spectron: SpectronApplication) { }
 

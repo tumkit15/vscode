@@ -19,7 +19,7 @@ import { IActivity } from 'vs/workbench/common/activity';
 
 export class ClosePanelAction extends Action {
 	static readonly ID = 'workbench.action.closePanel';
-	static LABEL = nls.localize('closePanel', "Close Panel");
+	static readonly LABEL = nls.localize('closePanel', "Close Panel");
 
 	constructor(
 		id: string,
@@ -36,7 +36,7 @@ export class ClosePanelAction extends Action {
 
 export class TogglePanelAction extends Action {
 	static readonly ID = 'workbench.action.togglePanel';
-	static LABEL = nls.localize('togglePanel', "Toggle Panel");
+	static readonly LABEL = nls.localize('togglePanel', "Toggle Panel");
 
 	constructor(
 		id: string,

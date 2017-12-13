@@ -48,7 +48,7 @@ const enum ComputeHoverOperationState {
 
 export class HoverOperation<Result> {
 
-	static HOVER_TIME = 300;
+	static readonly HOVER_TIME = 300;
 
 	private _computer: IHoverComputer<Result>;
 	private _state: ComputeHoverOperationState;

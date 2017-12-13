@@ -380,7 +380,7 @@ interface ResourceGroupTemplate {
 
 class ResourceGroupRenderer implements IRenderer<ISCMResourceGroup, ResourceGroupTemplate> {
 
-	static TEMPLATE_ID = 'resource group';
+	static readonly TEMPLATE_ID = 'resource group';
 	get templateId(): string { return ResourceGroupRenderer.TEMPLATE_ID; }
 
 	constructor(
@@ -458,7 +458,7 @@ class MultipleSelectionActionRunner extends ActionRunner {
 
 class ResourceRenderer implements IRenderer<ISCMResource, ResourceTemplate> {
 
-	static TEMPLATE_ID = 'resource';
+	static readonly TEMPLATE_ID = 'resource';
 	get templateId(): string { return ResourceRenderer.TEMPLATE_ID; }
 
 	constructor(

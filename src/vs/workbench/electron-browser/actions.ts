@@ -92,7 +92,7 @@ export class CloseCurrentWindowAction extends Action {
 export class CloseWorkspaceAction extends Action {
 
 	static readonly ID = 'workbench.action.closeFolder';
-	static LABEL = nls.localize('closeWorkspace', "Close Workspace");
+	static readonly LABEL = nls.localize('closeWorkspace', "Close Workspace");
 
 	constructor(
 		id: string,
@@ -118,7 +118,7 @@ export class CloseWorkspaceAction extends Action {
 export class NewWindowAction extends Action {
 
 	static readonly ID = 'workbench.action.newWindow';
-	static LABEL = nls.localize('newWindow', "New Window");
+	static readonly LABEL = nls.localize('newWindow', "New Window");
 
 	constructor(
 		id: string,
@@ -136,7 +136,7 @@ export class NewWindowAction extends Action {
 export class ToggleFullScreenAction extends Action {
 
 	static readonly ID = 'workbench.action.toggleFullScreen';
-	static LABEL = nls.localize('toggleFullScreen', "Toggle Full Screen");
+	static readonly LABEL = nls.localize('toggleFullScreen', "Toggle Full Screen");
 
 	constructor(id: string, label: string, @IWindowService private windowService: IWindowService) {
 		super(id, label);
@@ -150,7 +150,7 @@ export class ToggleFullScreenAction extends Action {
 export class ToggleMenuBarAction extends Action {
 
 	static readonly ID = 'workbench.action.toggleMenuBar';
-	static LABEL = nls.localize('toggleMenuBar', "Toggle Menu Bar");
+	static readonly LABEL = nls.localize('toggleMenuBar', "Toggle Menu Bar");
 
 	private static readonly menuBarVisibilityKey = 'window.menuBarVisibility';
 
@@ -184,7 +184,7 @@ export class ToggleMenuBarAction extends Action {
 export class ToggleDevToolsAction extends Action {
 
 	static readonly ID = 'workbench.action.toggleDevTools';
-	static LABEL = nls.localize('toggleDevTools', "Toggle Developer Tools");
+	static readonly LABEL = nls.localize('toggleDevTools', "Toggle Developer Tools");
 
 	constructor(id: string, label: string, @IWindowService private windowsService: IWindowService) {
 		super(id, label);
@@ -559,7 +559,7 @@ export class ShowStartupPerformance extends Action {
 export class ReloadWindowAction extends Action {
 
 	static readonly ID = 'workbench.action.reloadWindow';
-	static LABEL = nls.localize('reloadWindow', "Reload Window");
+	static readonly LABEL = nls.localize('reloadWindow', "Reload Window");
 
 	constructor(
 		id: string,
@@ -655,7 +655,7 @@ class CloseWindowAction extends Action implements IPickOpenAction {
 export class SwitchWindow extends BaseSwitchWindow {
 
 	static readonly ID = 'workbench.action.switchWindow';
-	static LABEL = nls.localize('switchWindow', "Switch Window...");
+	static readonly LABEL = nls.localize('switchWindow', "Switch Window...");
 
 	constructor(
 		id: string,
@@ -677,7 +677,7 @@ export class SwitchWindow extends BaseSwitchWindow {
 export class QuickSwitchWindow extends BaseSwitchWindow {
 
 	static readonly ID = 'workbench.action.quickSwitchWindow';
-	static LABEL = nls.localize('quickSwitchWindow', "Quick Switch Window...");
+	static readonly LABEL = nls.localize('quickSwitchWindow', "Quick Switch Window...");
 
 	constructor(
 		id: string,
@@ -1190,7 +1190,7 @@ export class OpenTipsAndTricksUrlAction extends Action {
 export class ToggleSharedProcessAction extends Action {
 
 	static readonly ID = 'workbench.action.toggleSharedProcess';
-	static LABEL = nls.localize('toggleSharedProcess', "Toggle Shared Process");
+	static readonly LABEL = nls.localize('toggleSharedProcess', "Toggle Shared Process");
 
 	constructor(id: string, label: string, @IWindowsService private windowsService: IWindowsService) {
 		super(id, label);
@@ -1484,7 +1484,7 @@ export class NavigateDownAction extends BaseNavigationAction {
 export abstract class BaseResizeViewAction extends Action {
 
 	// This is a media-size percentage
-	protected static RESIZE_INCREMENT = 6.5;
+	protected static readonly RESIZE_INCREMENT = 6.5;
 
 	constructor(
 		id: string,
@@ -1688,7 +1688,7 @@ export class ConfigureLocaleAction extends Action {
 export class OpenLogsFolderAction extends Action {
 
 	static readonly ID = 'workbench.action.openLogsFolder';
-	static LABEL = nls.localize('openLogsFolder', "Open Logs Folder");
+	static readonly LABEL = nls.localize('openLogsFolder', "Open Logs Folder");
 
 	constructor(id: string, label: string,
 		@IEnvironmentService private environmentService: IEnvironmentService,
@@ -1705,7 +1705,7 @@ export class OpenLogsFolderAction extends Action {
 export class ShowLogsAction extends Action {
 
 	static readonly ID = 'workbench.action.showLogs';
-	static LABEL = nls.localize('showLogs', "Show Logs...");
+	static readonly LABEL = nls.localize('showLogs', "Show Logs...");
 
 	constructor(id: string, label: string,
 		@IEnvironmentService private environmentService: IEnvironmentService,
@@ -1735,7 +1735,7 @@ export class ShowLogsAction extends Action {
 export class SetLogLevelAction extends Action {
 
 	static readonly ID = 'workbench.action.setLogLevel';
-	static LABEL = nls.localize('setLogLevel', "Set Log Level");
+	static readonly LABEL = nls.localize('setLogLevel', "Set Log Level");
 
 	constructor(id: string, label: string,
 		@IQuickOpenService private quickOpenService: IQuickOpenService,

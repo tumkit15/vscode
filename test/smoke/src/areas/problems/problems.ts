@@ -12,7 +12,7 @@ export enum ProblemSeverity {
 
 export class Problems {
 
-	static PROBLEMS_VIEW_SELECTOR = '.panel.markers-panel';
+	static readonly PROBLEMS_VIEW_SELECTOR = '.panel.markers-panel';
 
 	constructor(private spectron: SpectronApplication) {
 		// noop

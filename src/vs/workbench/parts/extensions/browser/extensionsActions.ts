@@ -414,7 +414,7 @@ export class ManageExtensionAction extends Action {
 export class EnableForWorkspaceAction extends Action implements IExtensionAction {
 
 	static readonly ID = 'extensions.enableForWorkspace';
-	static LABEL = localize('enableForWorkspaceAction', "Enable (Workspace)");
+	static readonly LABEL = localize('enableForWorkspaceAction', "Enable (Workspace)");
 
 	private disposables: IDisposable[] = [];
 
@@ -454,7 +454,7 @@ export class EnableForWorkspaceAction extends Action implements IExtensionAction
 export class EnableGloballyAction extends Action implements IExtensionAction {
 
 	static readonly ID = 'extensions.enableGlobally';
-	static LABEL = localize('enableGloballyAction', "Enable");
+	static readonly LABEL = localize('enableGloballyAction', "Enable");
 
 	private disposables: IDisposable[] = [];
 
@@ -550,7 +550,7 @@ export class EnableAction extends Action {
 export class DisableForWorkspaceAction extends Action implements IExtensionAction {
 
 	static readonly ID = 'extensions.disableForWorkspace';
-	static LABEL = localize('disableForWorkspaceAction', "Disable (Workspace)");
+	static readonly LABEL = localize('disableForWorkspaceAction', "Disable (Workspace)");
 
 	private disposables: IDisposable[] = [];
 
@@ -589,7 +589,7 @@ export class DisableForWorkspaceAction extends Action implements IExtensionActio
 export class DisableGloballyAction extends Action implements IExtensionAction {
 
 	static readonly ID = 'extensions.disableGlobally';
-	static LABEL = localize('disableGloballyAction', "Disable");
+	static readonly LABEL = localize('disableGloballyAction', "Disable");
 
 	private disposables: IDisposable[] = [];
 
@@ -681,7 +681,7 @@ export class DisableAction extends Action {
 export class CheckForUpdatesAction extends Action {
 
 	static readonly ID = 'workbench.extensions.action.checkForUpdates';
-	static LABEL = localize('checkForUpdates', "Check for Updates");
+	static readonly LABEL = localize('checkForUpdates', "Check for Updates");
 
 	constructor(
 		id = UpdateAllAction.ID,
@@ -721,7 +721,7 @@ export class ToggleAutoUpdateAction extends Action {
 export class EnableAutoUpdateAction extends ToggleAutoUpdateAction {
 
 	static readonly ID = 'workbench.extensions.action.enableAutoUpdate';
-	static LABEL = localize('enableAutoUpdate', "Enable Auto Updating Extensions");
+	static readonly LABEL = localize('enableAutoUpdate', "Enable Auto Updating Extensions");
 
 	constructor(
 		id = EnableAutoUpdateAction.ID,
@@ -735,7 +735,7 @@ export class EnableAutoUpdateAction extends ToggleAutoUpdateAction {
 export class DisableAutoUpdateAction extends ToggleAutoUpdateAction {
 
 	static readonly ID = 'workbench.extensions.action.disableAutoUpdate';
-	static LABEL = localize('disableAutoUpdate', "Disable Auto Updating Extensions");
+	static readonly LABEL = localize('disableAutoUpdate', "Disable Auto Updating Extensions");
 
 	constructor(
 		id = EnableAutoUpdateAction.ID,
@@ -749,7 +749,7 @@ export class DisableAutoUpdateAction extends ToggleAutoUpdateAction {
 export class UpdateAllAction extends Action {
 
 	static readonly ID = 'workbench.extensions.action.updateAllExtensions';
-	static LABEL = localize('updateAll', "Update All Extensions");
+	static readonly LABEL = localize('updateAll', "Update All Extensions");
 
 	private disposables: IDisposable[] = [];
 
@@ -880,7 +880,7 @@ export class ReloadAction extends Action {
 export class OpenExtensionsViewletAction extends ToggleViewletAction {
 
 	static ID = VIEWLET_ID;
-	static LABEL = localize('toggleExtensionsViewlet', "Show Extensions");
+	static readonly LABEL = localize('toggleExtensionsViewlet', "Show Extensions");
 
 	constructor(
 		id: string,
@@ -893,14 +893,14 @@ export class OpenExtensionsViewletAction extends ToggleViewletAction {
 }
 
 export class InstallExtensionsAction extends OpenExtensionsViewletAction {
-	static ID = 'workbench.extensions.action.installExtensions';
-	static LABEL = localize('installExtensions', "Install Extensions");
+	static readonly ID = 'workbench.extensions.action.installExtensions';
+	static readonly LABEL = localize('installExtensions', "Install Extensions");
 }
 
 export class ShowEnabledExtensionsAction extends Action {
 
 	static readonly ID = 'workbench.extensions.action.showEnabledExtensions';
-	static LABEL = localize('showEnabledExtensions', 'Show Enabled Extensions');
+	static readonly LABEL = localize('showEnabledExtensions', 'Show Enabled Extensions');
 
 	constructor(
 		id: string,
@@ -923,7 +923,7 @@ export class ShowEnabledExtensionsAction extends Action {
 export class ShowInstalledExtensionsAction extends Action {
 
 	static readonly ID = 'workbench.extensions.action.showInstalledExtensions';
-	static LABEL = localize('showInstalledExtensions', "Show Installed Extensions");
+	static readonly LABEL = localize('showInstalledExtensions', "Show Installed Extensions");
 
 	constructor(
 		id: string,
@@ -946,7 +946,7 @@ export class ShowInstalledExtensionsAction extends Action {
 export class ShowDisabledExtensionsAction extends Action {
 
 	static readonly ID = 'workbench.extensions.action.showDisabledExtensions';
-	static LABEL = localize('showDisabledExtensions', "Show Disabled Extensions");
+	static readonly LABEL = localize('showDisabledExtensions', "Show Disabled Extensions");
 
 	constructor(
 		id: string,
@@ -969,7 +969,7 @@ export class ShowDisabledExtensionsAction extends Action {
 export class ClearExtensionsInputAction extends Action {
 
 	static readonly ID = 'workbench.extensions.action.clearExtensionsInput';
-	static LABEL = localize('clearExtensionsInput', "Clear Extensions Input");
+	static readonly LABEL = localize('clearExtensionsInput', "Clear Extensions Input");
 
 	private disposables: IDisposable[] = [];
 
@@ -1005,7 +1005,7 @@ export class ClearExtensionsInputAction extends Action {
 export class ShowOutdatedExtensionsAction extends Action {
 
 	static readonly ID = 'workbench.extensions.action.listOutdatedExtensions';
-	static LABEL = localize('showOutdatedExtensions', "Show Outdated Extensions");
+	static readonly LABEL = localize('showOutdatedExtensions', "Show Outdated Extensions");
 
 	constructor(
 		id: string,
@@ -1028,7 +1028,7 @@ export class ShowOutdatedExtensionsAction extends Action {
 export class ShowPopularExtensionsAction extends Action {
 
 	static readonly ID = 'workbench.extensions.action.showPopularExtensions';
-	static LABEL = localize('showPopularExtensions', "Show Popular Extensions");
+	static readonly LABEL = localize('showPopularExtensions', "Show Popular Extensions");
 
 	constructor(
 		id: string,
@@ -1051,7 +1051,7 @@ export class ShowPopularExtensionsAction extends Action {
 export class ShowRecommendedExtensionsAction extends Action {
 
 	static readonly ID = 'workbench.extensions.action.showRecommendedExtensions';
-	static LABEL = localize('showRecommendedExtensions', "Show Recommended Extensions");
+	static readonly LABEL = localize('showRecommendedExtensions', "Show Recommended Extensions");
 
 	constructor(
 		id: string,
@@ -1074,7 +1074,7 @@ export class ShowRecommendedExtensionsAction extends Action {
 export class InstallWorkspaceRecommendedExtensionsAction extends Action {
 
 	static readonly ID = 'workbench.extensions.action.installWorkspaceRecommendedExtensions';
-	static LABEL = localize('installWorkspaceRecommendedExtensions', "Install All Workspace Recommended Extensions");
+	static readonly LABEL = localize('installWorkspaceRecommendedExtensions', "Install All Workspace Recommended Extensions");
 
 	private disposables: IDisposable[] = [];
 
@@ -1151,7 +1151,7 @@ export class InstallWorkspaceRecommendedExtensionsAction extends Action {
 export class InstallRecommendedExtensionAction extends Action {
 
 	static readonly ID = 'workbench.extensions.action.installRecommendedExtension';
-	static LABEL = localize('installRecommendedExtension', "Install Recommended Extension");
+	static readonly LABEL = localize('installRecommendedExtension', "Install Recommended Extension");
 
 	private extensionId: string;
 	private disposables: IDisposable[] = [];
@@ -1201,7 +1201,7 @@ export class InstallRecommendedExtensionAction extends Action {
 export class ShowRecommendedKeymapExtensionsAction extends Action {
 
 	static readonly ID = 'workbench.extensions.action.showRecommendedKeymapExtensions';
-	static SHORT_LABEL = localize('showRecommendedKeymapExtensionsShort', "Keymaps");
+	static readonly SHORT_LABEL = localize('showRecommendedKeymapExtensionsShort', "Keymaps");
 
 	constructor(
 		id: string,
@@ -1224,7 +1224,7 @@ export class ShowRecommendedKeymapExtensionsAction extends Action {
 export class ShowLanguageExtensionsAction extends Action {
 
 	static readonly ID = 'workbench.extensions.action.showLanguageExtensions';
-	static SHORT_LABEL = localize('showLanguageExtensionsShort', "Language Extensions");
+	static readonly SHORT_LABEL = localize('showLanguageExtensionsShort', "Language Extensions");
 
 	constructor(
 		id: string,
@@ -1247,7 +1247,7 @@ export class ShowLanguageExtensionsAction extends Action {
 export class ShowAzureExtensionsAction extends Action {
 
 	static readonly ID = 'workbench.extensions.action.showAzureExtensions';
-	static SHORT_LABEL = localize('showAzureExtensionsShort', "Azure Extensions");
+	static readonly SHORT_LABEL = localize('showAzureExtensionsShort', "Azure Extensions");
 
 	constructor(
 		id: string,
@@ -1446,7 +1446,7 @@ export abstract class AbstractConfigureRecommendedExtensionsAction extends Actio
 export class ConfigureWorkspaceRecommendedExtensionsAction extends AbstractConfigureRecommendedExtensionsAction {
 
 	static readonly ID = 'workbench.extensions.action.configureWorkspaceRecommendedExtensions';
-	static LABEL = localize('configureWorkspaceRecommendedExtensions', "Configure Recommended Extensions (Workspace)");
+	static readonly LABEL = localize('configureWorkspaceRecommendedExtensions', "Configure Recommended Extensions (Workspace)");
 
 	private disposables: IDisposable[] = [];
 
@@ -1487,7 +1487,7 @@ export class ConfigureWorkspaceRecommendedExtensionsAction extends AbstractConfi
 export class ConfigureWorkspaceFolderRecommendedExtensionsAction extends AbstractConfigureRecommendedExtensionsAction {
 
 	static readonly ID = 'workbench.extensions.action.configureWorkspaceFolderRecommendedExtensions';
-	static LABEL = localize('configureWorkspaceFolderRecommendedExtensions', "Configure Recommended Extensions (Workspace Folder)");
+	static readonly LABEL = localize('configureWorkspaceFolderRecommendedExtensions', "Configure Recommended Extensions (Workspace Folder)");
 
 	private disposables: IDisposable[] = [];
 
@@ -1556,7 +1556,7 @@ export class BuiltinStatusLabelAction extends Action {
 export class DisableAllAction extends Action {
 
 	static readonly ID = 'workbench.extensions.action.disableAll';
-	static LABEL = localize('disableAll', "Disable All Installed Extensions");
+	static readonly LABEL = localize('disableAll', "Disable All Installed Extensions");
 
 	private disposables: IDisposable[] = [];
 
@@ -1586,7 +1586,7 @@ export class DisableAllAction extends Action {
 export class DisableAllWorkpsaceAction extends Action {
 
 	static readonly ID = 'workbench.extensions.action.disableAllWorkspace';
-	static LABEL = localize('disableAllWorkspace', "Disable All Installed Extensions for this Workspace");
+	static readonly LABEL = localize('disableAllWorkspace', "Disable All Installed Extensions for this Workspace");
 
 	private disposables: IDisposable[] = [];
 
@@ -1618,7 +1618,7 @@ export class DisableAllWorkpsaceAction extends Action {
 export class EnableAllAction extends Action {
 
 	static readonly ID = 'workbench.extensions.action.enableAll';
-	static LABEL = localize('enableAll', "Enable All Installed Extensions");
+	static readonly LABEL = localize('enableAll', "Enable All Installed Extensions");
 
 	private disposables: IDisposable[] = [];
 
@@ -1649,7 +1649,7 @@ export class EnableAllAction extends Action {
 export class EnableAllWorkpsaceAction extends Action {
 
 	static readonly ID = 'workbench.extensions.action.enableAllWorkspace';
-	static LABEL = localize('enableAllWorkspace', "Enable All Installed Extensions for this Workspace");
+	static readonly LABEL = localize('enableAllWorkspace', "Enable All Installed Extensions for this Workspace");
 
 	private disposables: IDisposable[] = [];
 

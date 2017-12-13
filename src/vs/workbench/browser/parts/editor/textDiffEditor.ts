@@ -308,8 +308,8 @@ export class TextDiffEditor extends BaseTextEditor {
 }
 
 class NavigateAction extends Action {
-	static ID_NEXT = 'workbench.action.compareEditor.nextChange';
-	static ID_PREV = 'workbench.action.compareEditor.previousChange';
+	static readonly ID_NEXT = 'workbench.action.compareEditor.nextChange';
+	static readonly ID_PREV = 'workbench.action.compareEditor.previousChange';
 
 	private editor: TextDiffEditor;
 	private next: boolean;

@@ -31,7 +31,7 @@ import { IHistoryService } from 'vs/workbench/services/history/common/history';
 export class OpenFileAction extends Action {
 
 	static readonly ID = 'workbench.action.files.openFile';
-	static LABEL = nls.localize('openFile', "Open File...");
+	static readonly LABEL = nls.localize('openFile', "Open File...");
 
 	constructor(
 		id: string,
@@ -51,7 +51,7 @@ export class OpenFileAction extends Action {
 export class OpenFolderAction extends Action {
 
 	static readonly ID = 'workbench.action.files.openFolder';
-	static LABEL = nls.localize('openFolder', "Open Folder...");
+	static readonly LABEL = nls.localize('openFolder', "Open Folder...");
 
 	constructor(
 		id: string,
@@ -71,7 +71,7 @@ export class OpenFolderAction extends Action {
 export class OpenFileFolderAction extends Action {
 
 	static readonly ID = 'workbench.action.files.openFileFolder';
-	static LABEL = nls.localize('openFileFolder', "Open...");
+	static readonly LABEL = nls.localize('openFileFolder', "Open...");
 
 	constructor(
 		id: string,
@@ -196,7 +196,7 @@ function isUntitledWorkspace(path: string, environmentService: IEnvironmentServi
 export class AddRootFolderAction extends BaseWorkspacesAction {
 
 	static readonly ID = 'workbench.action.addRootFolder';
-	static LABEL = nls.localize('addFolderToWorkspace', "Add Folder to Workspace...");
+	static readonly LABEL = nls.localize('addFolderToWorkspace', "Add Folder to Workspace...");
 
 	constructor(
 		id: string,
@@ -226,7 +226,7 @@ export class AddRootFolderAction extends BaseWorkspacesAction {
 export class GlobalRemoveRootFolderAction extends BaseWorkspacesAction {
 
 	static readonly ID = 'workbench.action.removeRootFolder';
-	static LABEL = nls.localize('globalRemoveFolderFromWorkspace', "Remove Folder from Workspace...");
+	static readonly LABEL = nls.localize('globalRemoveFolderFromWorkspace', "Remove Folder from Workspace...");
 
 	constructor(
 		id: string,
@@ -262,7 +262,7 @@ export class GlobalRemoveRootFolderAction extends BaseWorkspacesAction {
 export class RemoveRootFolderAction extends Action {
 
 	static readonly ID = 'workbench.action.removeRootFolder';
-	static LABEL = nls.localize('removeFolderFromWorkspace', "Remove Folder from Workspace");
+	static readonly LABEL = nls.localize('removeFolderFromWorkspace', "Remove Folder from Workspace");
 
 	constructor(
 		private rootUri: URI,
@@ -281,7 +281,7 @@ export class RemoveRootFolderAction extends Action {
 export class OpenFolderSettingsAction extends Action {
 
 	static readonly ID = 'workbench.action.openFolderSettings';
-	static LABEL = nls.localize('openFolderSettings', "Open Folder Settings");
+	static readonly LABEL = nls.localize('openFolderSettings', "Open Folder Settings");
 
 	constructor(
 		private rootUri: URI,
@@ -303,7 +303,7 @@ export class OpenFolderSettingsAction extends Action {
 export class SaveWorkspaceAsAction extends BaseWorkspacesAction {
 
 	static readonly ID = 'workbench.action.saveWorkspaceAs';
-	static LABEL = nls.localize('saveWorkspaceAsAction', "Save Workspace As...");
+	static readonly LABEL = nls.localize('saveWorkspaceAsAction', "Save Workspace As...");
 
 	constructor(
 		id: string,
@@ -348,7 +348,7 @@ export class SaveWorkspaceAsAction extends BaseWorkspacesAction {
 export class OpenWorkspaceAction extends Action {
 
 	static readonly ID = 'workbench.action.openWorkspace';
-	static LABEL = nls.localize('openWorkspaceAction', "Open Workspace...");
+	static readonly LABEL = nls.localize('openWorkspaceAction', "Open Workspace...");
 
 	constructor(
 		id: string,

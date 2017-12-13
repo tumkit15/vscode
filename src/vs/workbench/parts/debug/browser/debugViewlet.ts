@@ -139,7 +139,7 @@ export class DebugViewlet extends PersistentViewsViewlet {
 export class FocusVariablesViewAction extends Action {
 
 	static readonly ID = 'workbench.debug.action.focusVariablesView';
-	static LABEL = nls.localize('debugFocusVariablesView', 'Focus Variables');
+	static readonly LABEL = nls.localize('debugFocusVariablesView', 'Focus Variables');
 
 	constructor(id: string, label: string,
 		@IViewletService private viewletService: IViewletService
@@ -157,7 +157,7 @@ export class FocusVariablesViewAction extends Action {
 export class FocusWatchViewAction extends Action {
 
 	static readonly ID = 'workbench.debug.action.focusWatchView';
-	static LABEL = nls.localize({ comment: ['Debug is a noun in this context, not a verb.'], key: 'debugFocusWatchView' }, 'Focus Watch');
+	static readonly LABEL = nls.localize({ comment: ['Debug is a noun in this context, not a verb.'], key: 'debugFocusWatchView' }, 'Focus Watch');
 
 	constructor(id: string, label: string,
 		@IViewletService private viewletService: IViewletService
@@ -175,7 +175,7 @@ export class FocusWatchViewAction extends Action {
 export class FocusCallStackViewAction extends Action {
 
 	static readonly ID = 'workbench.debug.action.focusCallStackView';
-	static LABEL = nls.localize({ comment: ['Debug is a noun in this context, not a verb.'], key: 'debugFocusCallStackView' }, 'Focus CallStack');
+	static readonly LABEL = nls.localize({ comment: ['Debug is a noun in this context, not a verb.'], key: 'debugFocusCallStackView' }, 'Focus CallStack');
 
 	constructor(id: string, label: string,
 		@IViewletService private viewletService: IViewletService
@@ -193,7 +193,7 @@ export class FocusCallStackViewAction extends Action {
 export class FocusBreakpointsViewAction extends Action {
 
 	static readonly ID = 'workbench.debug.action.focusBreakpointsView';
-	static LABEL = nls.localize({ comment: ['Debug is a noun in this context, not a verb.'], key: 'debugFocusBreakpointsView' }, 'Focus Breakpoints');
+	static readonly LABEL = nls.localize({ comment: ['Debug is a noun in this context, not a verb.'], key: 'debugFocusBreakpointsView' }, 'Focus Breakpoints');
 
 	constructor(id: string, label: string,
 		@IViewletService private viewletService: IViewletService

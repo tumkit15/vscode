@@ -20,7 +20,7 @@ import { TextEditorCursorBlinkingStyle, TextEditorCursorStyle } from 'vs/editor/
 
 export class ViewCursors extends ViewPart {
 
-	static BLINK_INTERVAL = 500;
+	static readonly BLINK_INTERVAL = 500;
 
 	private _readOnly: boolean;
 	private _cursorBlinking: TextEditorCursorBlinkingStyle;

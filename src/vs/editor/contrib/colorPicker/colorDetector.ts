@@ -23,7 +23,7 @@ export class ColorDetector implements IEditorContribution {
 
 	private static ID: string = 'editor.contrib.colorDetector';
 
-	static RECOMPUTE_TIME = 1000; // ms
+	static readonly RECOMPUTE_TIME = 1000; // ms
 
 	private _globalToDispose: IDisposable[] = [];
 	private _localToDispose: IDisposable[] = [];

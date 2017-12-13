@@ -21,7 +21,7 @@ import { mnemonicButtonLabel } from 'vs/base/common/labels';
 export class OpenExtensionsFolderAction extends Action {
 
 	static readonly ID = 'workbench.extensions.action.openExtensionsFolder';
-	static LABEL = localize('openExtensionsFolder', "Open Extensions Folder");
+	static readonly LABEL = localize('openExtensionsFolder', "Open Extensions Folder");
 
 	constructor(
 		id: string,
@@ -52,7 +52,7 @@ export class OpenExtensionsFolderAction extends Action {
 export class InstallVSIXAction extends Action {
 
 	static readonly ID = 'workbench.extensions.action.installVSIX';
-	static LABEL = localize('installVSIX', "Install from VSIX...");
+	static readonly LABEL = localize('installVSIX', "Install from VSIX...");
 
 	constructor(
 		id = InstallVSIXAction.ID,

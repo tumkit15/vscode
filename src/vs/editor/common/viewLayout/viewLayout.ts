@@ -18,7 +18,7 @@ const SMOOTH_SCROLLING_TIME = 125;
 
 export class ViewLayout extends Disposable implements IViewLayout {
 
-	static LINES_HORIZONTAL_EXTRA_PX = 30;
+	static readonly LINES_HORIZONTAL_EXTRA_PX = 30;
 
 	private readonly _configuration: editorCommon.IConfiguration;
 	private readonly _linesLayout: LinesLayout;

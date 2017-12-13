@@ -29,7 +29,7 @@ import { LIGHT, DARK, HIGH_CONTRAST } from 'vs/platform/theme/common/themeServic
 export class SelectColorThemeAction extends Action {
 
 	static readonly ID = 'workbench.action.selectTheme';
-	static LABEL = localize('selectTheme.label', "Color Theme");
+	static readonly LABEL = localize('selectTheme.label', "Color Theme");
 
 	constructor(
 		id: string,
@@ -88,7 +88,7 @@ export class SelectColorThemeAction extends Action {
 class SelectIconThemeAction extends Action {
 
 	static readonly ID = 'workbench.action.selectIconTheme';
-	static LABEL = localize('selectIconTheme.label', "File Icon Theme");
+	static readonly LABEL = localize('selectIconTheme.label', "File Icon Theme");
 
 	constructor(
 		id: string,
@@ -172,7 +172,7 @@ function toEntries(themes: (IColorTheme | IFileIconTheme)[], label?: string, bor
 class GenerateColorThemeAction extends Action {
 
 	static readonly ID = 'workbench.action.generateColorTheme';
-	static LABEL = localize('generateColorTheme.label', "Generate Color Theme From Current Settings");
+	static readonly LABEL = localize('generateColorTheme.label', "Generate Color Theme From Current Settings");
 
 	constructor(
 		id: string,

@@ -29,7 +29,7 @@ import { ClickLinkGesture, ClickLinkMouseEvent, ClickLinkKeyboardEvent } from 'v
 class GotoDefinitionWithMouseEditorContribution implements editorCommon.IEditorContribution {
 
 	private static readonly ID = 'editor.contrib.gotodefinitionwithmouse';
-	static MAX_SOURCE_PREVIEW_LINES = 8;
+	static readonly MAX_SOURCE_PREVIEW_LINES = 8;
 
 	private editor: ICodeEditor;
 	private toUnhook: IDisposable[];

@@ -77,7 +77,7 @@ interface TreeNode {
 
 class ExtHostTreeView<T> extends Disposable {
 
-	private static ROOT_HANDLE = '0';
+	private static readonly ROOT_HANDLE = '0';
 	private elements: Map<TreeItemHandle, T> = new Map<TreeItemHandle, T>();
 	private nodes: Map<T, TreeNode> = new Map<T, TreeNode>();
 

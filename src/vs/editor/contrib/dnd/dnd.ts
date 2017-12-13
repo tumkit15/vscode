@@ -29,8 +29,8 @@ export class DragAndDropController implements editorCommon.IEditorContribution {
 	private _dndDecorationIds: string[];
 	private _mouseDown: boolean;
 	private _modiferPressed: boolean;
-	static TRIGGER_MODIFIER = isMacintosh ? 'altKey' : 'ctrlKey';
-	static TRIGGER_KEY_VALUE = isMacintosh ? KeyCode.Alt : KeyCode.Ctrl;
+	static readonly TRIGGER_MODIFIER = isMacintosh ? 'altKey' : 'ctrlKey';
+	static readonly TRIGGER_KEY_VALUE = isMacintosh ? KeyCode.Alt : KeyCode.Ctrl;
 
 	static get(editor: ICodeEditor): DragAndDropController {
 		return editor.getContribution<DragAndDropController>(DragAndDropController.ID);
