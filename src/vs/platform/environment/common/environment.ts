@@ -53,6 +53,7 @@ export interface ParsedArgs {
 	'disable-crash-reporter'?: string;
 	'skip-add-to-recently-opened'?: boolean;
 	'write-elevated-helper'?: boolean;
+	'upload-logs'?: boolean;
 }
 
 export const IEnvironmentService = createDecorator<IEnvironmentService>('environmentService');

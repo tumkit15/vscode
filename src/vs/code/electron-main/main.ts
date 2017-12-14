@@ -189,6 +189,12 @@ function setupIPC(accessor: ServicesAccessor): TPromise<Server> {
 						});
 					}
 
+					// Log uploader
+					if (environmentService.args['upload-logs']) {
+						return import('vs/code/electron-main/logUploader').then(logUploader =>
+							logUploader.uploadLogs(channel));
+					}
+
 					logService.trace('Sending env to running instance...');
 
 					return allowSetForegroundWindow(service)

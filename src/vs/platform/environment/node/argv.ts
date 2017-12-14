@@ -55,7 +55,8 @@ const options: minimist.Opts = {
 		'disable-crash-reporter',
 		'skip-add-to-recently-opened',
 		'status',
-		'write-elevated-helper'
+		'write-elevated-helper',
+		'upload-logs'
 	],
 	alias: {
 		add: 'a',
@@ -153,7 +154,8 @@ export const optionsHelp: { [name: string]: string; } = {
 	'--disable-gpu': localize('disableGPU', "Disable GPU hardware acceleration."),
 	'-s, --status': localize('status', "Print process usage and diagnostics information."),
 	'-v, --version': localize('version', "Print version."),
-	'-h, --help': localize('help', "Print usage.")
+	'-h, --help': localize('help', "Print usage."),
+	'--upload-logs': localize('uploadLogs', "Upload logs.")
 };
 
 export function formatOptions(options: { [name: string]: string; }, columns: number): string {
