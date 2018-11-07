@@ -147,16 +147,19 @@ export function parseStorage(storage: IStorageLegacy): IParsedStorage {
 	// from the longest path first to reliably extract the storage. The reason is that one folder path can be a parent
 	// of another folder path and as such a simple indexOf check is not enough.
 	const workspacesByLength = workspaces.sort((w1, w2) => w1.prefix.length >= w2.prefix.length ? -1 : 1);
-	const handledKeys = new Map<string, boolean>();
-	workspacesByLength.forEach(workspace => {
-		for (let i = 0; i < storage.length; i++) {
-			const key = storage.key(i);
 
-			if (handledKeys.has(key) || !startsWith(key, workspace.prefix)) {
-				continue; // not part of workspace prefix or already handled
+	const activeKeys = new Set<string>();
+	for (let i = 0; i < storage.length; i++) {
+		activeKeys.add(storage.key(i));
+	}
+
+	workspacesByLength.forEach(workspace => {
+		activeKeys.forEach(key => {
+			if (!startsWith(key, workspace.prefix)) {
+				return; // not part of workspace prefix or already handled
 			}
 
-			handledKeys.set(key, true);
+			activeKeys.delete(key);
 
 			let folderWorkspaceStorage = folderWorkspacesStorage.get(workspace.resource);
 			if (!folderWorkspaceStorage) {
@@ -168,7 +171,7 @@ export function parseStorage(storage: IStorageLegacy): IParsedStorage {
 			const storageKey = key.substr(workspace.prefix.length);
 
 			folderWorkspaceStorage[storageKey] = storage.getItem(key);
-		}
+		});
 	});
 
 	return {
